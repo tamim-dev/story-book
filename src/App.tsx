@@ -13,6 +13,8 @@ function App() {
     setButtonClicked(!buttonClicked)
     console.log('Button clicked')
   }
+  console.log('Button clicked:', buttonClicked);
+  
   const handleInputChange = (value: string) => {
     setInputValue(value)
     console.log('Input value:', value)
