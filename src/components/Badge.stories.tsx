@@ -2,20 +2,30 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "./Badge";
 
 const meta = {
-  title: "Components/Badge",
+  title: "Design System/Badge",
   component: Badge,
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
-        component: "A small status label that supports success, warning, and error variants.",
+        component:
+          "Compact status indicator. Correct usage: semantic status labels only. Incorrect usage: avoid using badges as buttons.",
       },
     },
   },
+  args: {
+    children: "Status",
+    variant: "primary",
+    size: "md",
+  },
   argTypes: {
-    label: { control: "text" },
     variant: {
       control: { type: "select" },
-      options: ["success", "warning", "error"],
+      options: ["primary", "secondary", "success", "error"],
+    },
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -24,23 +34,37 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    label: "Success",
-    variant: "success",
-  },
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex gap-3">
+      <Badge {...args} variant="primary">
+        Primary
+      </Badge>
+      <Badge {...args} variant="secondary">
+        Secondary
+      </Badge>
+      <Badge {...args} variant="success">
+        Success
+      </Badge>
+      <Badge {...args} variant="error">
+        Error
+      </Badge>
+    </div>
+  ),
 };
 
-export const Warning: Story = {
-  args: {
-    label: "Warning",
-    variant: "warning",
-  },
-};
-
-export const Error: Story = {
-  args: {
-    label: "Error",
-    variant: "error",
-  },
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-3">
+      <Badge {...args} size="sm">
+        Small
+      </Badge>
+      <Badge {...args} size="md">
+        Medium
+      </Badge>
+      <Badge {...args} size="lg">
+        Large
+      </Badge>
+    </div>
+  ),
 };

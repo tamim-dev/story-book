@@ -1,0 +1,15 @@
+export const colors = {
+  primary: "#3b82f6",
+  primaryHover: "#2563eb",
+  secondary: "#64748b",
+  secondaryHover: "#475569",
+  success: "#22c55e",
+  warning: "#f59e0b",
+  error: "#ef4444",
+  text: "#0f172a",
+  textMuted: "#475569",
+  background: "#f8fafc",
+  surface: "#ffffff",
+  border: "#cbd5e1",
+  focusRing: "#93c5fd",
+} as const;

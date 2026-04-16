@@ -1,32 +1,35 @@
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "./Input";
 
 const meta = {
-  title: "Components/Input",
+  title: "Design System/Input",
   component: Input,
-  args: {
-    onChange: () => {},
-  },
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
-        component: "A text input with basic size, variant, and disabled options.",
+        component:
+          "Accessible input that standardizes `variant`, `size`, and `className`.\n\nCorrect usage: choose validation variant (`default|success|error`) from business state.\nIncorrect usage: do not hardcode border/text color classes in feature components.",
       },
     },
   },
+  args: {
+    value: "",
+    placeholder: "Type here",
+    variant: "default",
+    size: "md",
+    disabled: false,
+  },
   argTypes: {
-    value: { control: "text" },
-    placeholder: { control: "text" },
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: ["sm", "md", "lg"],
     },
     variant: {
       control: { type: "select" },
-      options: ["default", "error"],
+      options: ["default", "success", "error"],
     },
-    disabled: { control: "boolean" },
     onChange: { table: { disable: true } },
   },
 } satisfies Meta<typeof Input>;
@@ -35,62 +38,38 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Empty: Story = {
-  render: (args) => {
-    const [value, setValue] = useState(args.value);
+const Stateful = (args: ComponentProps<typeof Input>) => {
+  const [value, setValue] = useState(args.value ?? "");
+  return <Input {...args} value={value} onChange={(event) => setValue(event.target.value)} />;
+};
 
-    return <Input {...args} value={value} onChange={setValue} />;
-  },
-  args: {
-    value: "",
-    placeholder: "Type here",
-    size: "medium",
-    variant: "default",
-    disabled: false,
+export const Variants: Story = {
+  render: (args) => {
+    return (
+      <div className="max-w-card space-y-3">
+        <Stateful {...args} variant="default" placeholder="Default input" />
+        <Stateful {...args} variant="success" value="Valid value" />
+        <Stateful {...args} variant="error" value="Invalid value" />
+      </div>
+    );
   },
 };
 
-export const WithText: Story = {
+export const Sizes: Story = {
   render: (args) => {
-    const [value, setValue] = useState(args.value);
-
-    return <Input {...args} value={value} onChange={setValue} />;
-  },
-  args: {
-    value: "Hello Storybook",
-    placeholder: "Type here",
-    size: "medium",
-    variant: "default",
-    disabled: false,
-  },
-};
-
-export const ErrorVariant: Story = {
-  render: (args) => {
-    const [value, setValue] = useState(args.value);
-
-    return <Input {...args} value={value} onChange={setValue} />;
-  },
-  args: {
-    value: "Invalid value",
-    placeholder: "Type here",
-    size: "medium",
-    variant: "error",
-    disabled: false,
+    return (
+      <div className="max-w-card space-y-3">
+        <Stateful {...args} size="sm" placeholder="Small" />
+        <Stateful {...args} size="md" placeholder="Medium" />
+        <Stateful {...args} size="lg" placeholder="Large" />
+      </div>
+    );
   },
 };
 
 export const Disabled: Story = {
-  render: (args) => {
-    const [value, setValue] = useState(args.value);
-
-    return <Input {...args} value={value} onChange={setValue} />;
-  },
   args: {
-    value: "Disabled input",
-    placeholder: "Type here",
-    size: "medium",
-    variant: "default",
+    value: "Disabled",
     disabled: true,
   },
 };
