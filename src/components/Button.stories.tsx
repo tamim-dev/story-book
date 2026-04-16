@@ -2,27 +2,32 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 
 const meta = {
-  title: "Components/Button",
+  title: "Design System/Button",
   component: Button,
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
         component:
-          "A simple reusable button with variant, size, and disabled states.",
+          "Token-driven button component with consistent `variant`, `size`, and `className` API.\n\nCorrect usage: use semantic variants and sizes.\nIncorrect usage: avoid inline style overrides or raw color classes in product code.",
       },
     },
   },
+  args: {
+    children: "Button",
+    variant: "primary",
+    size: "md",
+    disabled: false,
+  },
   argTypes: {
-    label: { control: "text" },
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary", "warning", "success", "error"],
+      options: ["primary", "secondary", "outline"],
     },
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: ["sm", "md", "lg"],
     },
-    disabled: { control: "boolean" },
     onClick: { action: "clicked" },
   },
 } satisfies Meta<typeof Button>;
@@ -31,74 +36,41 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    label: "Click me",
-    disabled: false,
-    variant: "primary",
-    size: "medium",
-  },
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex gap-3">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-3">
+      <Button {...args} size="sm">
+        Small
+      </Button>
+      <Button {...args} size="md">
+        Medium
+      </Button>
+      <Button {...args} size="lg">
+        Large
+      </Button>
+    </div>
+  ),
 };
 
 export const Disabled: Story = {
   args: {
-    label: "Disabled button",
     disabled: true,
-    variant: "primary",
-    size: "medium",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    label: "Secondary button",
-    variant: "secondary",
-    size: "medium",
-  },
-};
-
-export const Primary: Story = {
-  args: {
-    label: "Primary button",
-    variant: "primary",
-    size: "medium",
-  },
-};
-
-export const Warning: Story = {
-  args: {
-    label: "Warning button",
-    variant: "warning",
-    size: "medium",
-  },
-};
-
-export const Success: Story = {
-  args: {
-    label: "Success button",
-    variant: "success",
-    size: "medium",
-  },
-};
-
-export const Error: Story = {
-  args: {
-    label: "Error button",
-    variant: "error",
-    size: "medium",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    label: "Large button",
-    size: "large",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    label: "Small button",
-    size: "small",
+    children: "Disabled",
   },
 };
