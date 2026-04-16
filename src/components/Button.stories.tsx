@@ -16,7 +16,7 @@ const meta = {
     label: { control: "text" },
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary"],
+      options: ["primary", "secondary", "warning", "success", "error"],
     },
     size: {
       control: { type: "select" },
@@ -61,6 +61,30 @@ export const Primary: Story = {
   args: {
     label: "Primary button",
     variant: "primary",
+    size: "medium",
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    label: "Warning button",
+    variant: "warning",
+    size: "medium",
+  },
+};
+
+export const Success: Story = {
+  args: {
+    label: "Success button",
+    variant: "success",
+    size: "medium",
+  },
+};
+
+export const Error: Story = {
+  args: {
+    label: "Error button",
+    variant: "error",
     size: "medium",
   },
 };
