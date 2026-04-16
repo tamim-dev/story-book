@@ -1,4 +1,4 @@
-type ButtonProps = {
+export type ButtonProps = {
   label: string;
   onClick?: () => void;
   disabled?: boolean;
@@ -18,7 +18,7 @@ export const Button = ({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`btn btn-${variant} btn-${size}`}
+      className={`btn btn-${variant} btn-${size} ${disabled ? "btn-disabled" : ""}`}
     >
       {label}
     </button>
