@@ -2,7 +2,7 @@ export type ButtonProps = {
   label: string;
   onClick?: () => void;
   disabled?: boolean;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "error" | "warning" | "success";
   size?: "small" | "medium" | "large";
 };
 
