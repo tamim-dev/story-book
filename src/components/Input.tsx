@@ -1,12 +1,22 @@
 import type { ChangeEvent } from "react";
 
-type InputProps = {
+export type InputProps = {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  disabled?: boolean;
+  size?: "small" | "medium" | "large";
+  variant?: "default" | "error";
 };
 
-export function Input({ value, onChange, placeholder }: InputProps) {
+export function Input({
+  value,
+  onChange,
+  placeholder,
+  disabled = false,
+  size = "medium",
+  variant = "default",
+}: InputProps) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
@@ -17,6 +27,8 @@ export function Input({ value, onChange, placeholder }: InputProps) {
       value={value}
       onChange={handleChange}
       placeholder={placeholder}
+      disabled={disabled}
+      className={`input input-${size} input-${variant}`}
     />
   );
 }
