@@ -6,7 +6,7 @@ function App() {
   const [toggleChecked, setToggleChecked] = useState(false);
 
   return (
-    <main className="space-y-6">
+    <main className="space-y-6 dark">
       <h1 className="text-3xl font-semibold">Design System Playground</h1>
 
       <section className="flex flex-wrap items-center gap-3">

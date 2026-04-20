@@ -12,8 +12,8 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-primary text-white hover:bg-primary-hover",
-  secondary: "bg-secondary text-white hover:bg-secondary-hover",
+  primary: "bg-primary text-surface hover:bg-primary-hover",
+  secondary: "bg-secondary text-surface hover:bg-secondary-hover",
   outline: "border border-border bg-surface text-text hover:bg-background",
 };
 

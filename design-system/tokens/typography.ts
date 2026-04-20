@@ -6,7 +6,7 @@ export const typography: {
   fontWeight: Record<string, string>;
 } = {
   fontFamily: {
-    sans: ['"Inter"', "system-ui", "sans-serif"],
+    sans: ['var(--fontfamilies-public-sans, "Public Sans")', "system-ui", "sans-serif"],
     mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
   },
   fontSize: {

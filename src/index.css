@@ -1,29 +1,14 @@
+@import "./styles/tokens.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-primary: #3b82f6;
-    --color-primary-hover: #2563eb;
-    --color-secondary: #64748b;
-    --color-secondary-hover: #475569;
-    --color-success: #22c55e;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-text: #0f172a;
-    --color-text-muted: #475569;
-    --color-background: #f8fafc;
-    --color-surface: #ffffff;
-    --color-border: #cbd5e1;
-    --color-focus-ring: #93c5fd;
-  }
-
   body {
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--fontfamilies-public-sans, "Public Sans"), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

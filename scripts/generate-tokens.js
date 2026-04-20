@@ -110,7 +110,7 @@ const emitTokenVariables = (token, pathParts) => {
     const tokenType = token.$type;
     const value = normalizeValue(token.$value, tokenType);
     const kebabParts = pathParts.map(toKebabCase);
-    const varName = colorCategories.has(pathParts[0])
+    const varName = colorCategories.has(kebabParts[0])
       ? `--color-${kebabParts.join("-")}`
       : `--${kebabParts.join("-")}`;
     css += `  ${varName}: ${value};\n`;

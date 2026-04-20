@@ -1,10 +1,6 @@
 import type { Config } from "tailwindcss";
 import { colors, radius, shadows, spacing, typography } from "./design-system/tokens";
 
-const cssVariableColors = Object.fromEntries(
-  Object.keys(colors).map((token) => [token.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`), `var(--color-${token.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)})`]),
-);
-
 const config: Config = {
   content: [
     "./index.html",
@@ -14,7 +10,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: cssVariableColors,
+      colors,
       spacing,
       borderRadius: radius,
       boxShadow: shadows,
