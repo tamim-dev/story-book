@@ -40,7 +40,13 @@ type Story = StoryObj<typeof meta>;
 
 const Stateful = (args: ComponentProps<typeof Input>) => {
   const [value, setValue] = useState(args.value ?? "");
-  return <Input {...args} value={value} onChange={(event) => setValue(event.target.value)} />;
+  return (
+    <Input
+      {...args}
+      value={value}
+      onChange={(event) => setValue(event.target.value)}
+    />
+  );
 };
 
 export const Variants: Story = {

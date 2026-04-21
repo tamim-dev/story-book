@@ -45,8 +45,12 @@ export function Card({
       {...rest}
     >
       <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-      {description ? <p className="text-sm text-text-muted">{description}</p> : null}
-      {children ? <div className="mt-3 text-sm text-text">{children}</div> : null}
+      {description ? (
+        <p className="text-sm text-text-muted">{description}</p>
+      ) : null}
+      {children ? (
+        <div className="mt-3 text-sm text-text">{children}</div>
+      ) : null}
     </section>
   );
 }

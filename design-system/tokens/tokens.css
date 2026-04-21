@@ -72,19 +72,49 @@
   --color-test-900: #191c1f;
   --color-test-00: #ffffff;
   --dropdown-shadow: 0px 8px 40px 0px #0000001f;
-  --display-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=72 | fontsize=64 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --display-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=64 | fontsize=56 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --display-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=56 | fontsize=48 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --display-04: fontfamily=Public Sans | fontweight=SemiBold | lineheight=48 | fontsize=40 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --display-05: fontfamily=Public Sans | fontweight=SemiBold | lineheight=44 | fontsize=36 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --heading-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=40 | fontsize=32 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --heading-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 | fontsize=28 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --heading-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 | fontsize=24 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=none | textdecoration=none;
-  --heading-06: fontfamily=Public Sans | fontweight=Bold | lineheight=56 | fontsize=16 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --heading-07: fontfamily=Public Sans | fontweight=Bold | lineheight=48 | fontsize=14 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --label-01: fontfamily=Public Sans | fontweight=Medium | lineheight=28 | fontsize=18 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --label-02: fontfamily=Public Sans | fontweight=Medium | lineheight=24 | fontsize=16 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --label-03: fontfamily=Public Sans | fontweight=Medium | lineheight=20 | fontsize=14 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --label-04: fontfamily=Public Sans | fontweight=Medium | lineheight=150% | fontsize=12 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
-  --label-05: fontfamily=Public Sans | fontweight=Medium | lineheight=16 | fontsize=11 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px | textcase=uppercase | textdecoration=none;
+  --display-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=72 |
+    fontsize=64 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=64 |
+    fontsize=56 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=56 |
+    fontsize=48 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-04: fontfamily=Public Sans | fontweight=SemiBold | lineheight=48 |
+    fontsize=40 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-05: fontfamily=Public Sans | fontweight=SemiBold | lineheight=44 |
+    fontsize=36 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=40 |
+    fontsize=32 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 |
+    fontsize=28 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 |
+    fontsize=24 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-06: fontfamily=Public Sans | fontweight=Bold | lineheight=56 |
+    fontsize=16 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px
+    | textcase=uppercase | textdecoration=none;
+  --heading-07: fontfamily=Public Sans | fontweight=Bold | lineheight=48 |
+    fontsize=14 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px
+    | textcase=uppercase | textdecoration=none;
+  --label-01: fontfamily=Public Sans | fontweight=Medium | lineheight=28 |
+    fontsize=18 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-02: fontfamily=Public Sans | fontweight=Medium | lineheight=24 |
+    fontsize=16 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-03: fontfamily=Public Sans | fontweight=Medium | lineheight=20 |
+    fontsize=14 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-04: fontfamily=Public Sans | fontweight=Medium | lineheight=150% |
+    fontsize=12 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-05: fontfamily=Public Sans | fontweight=Medium | lineheight=16 |
+    fontsize=11 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
 }

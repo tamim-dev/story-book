@@ -3,7 +3,11 @@ import { cn } from "../../../../design-system/utils/cn";
 
 export type FormSelectFieldProps = SelectHTMLAttributes<HTMLSelectElement>;
 
-export function FormSelectField({ className, children, ...props }: FormSelectFieldProps) {
+export function FormSelectField({
+  className,
+  children,
+  ...props
+}: FormSelectFieldProps) {
   return (
     <select
       className={cn(

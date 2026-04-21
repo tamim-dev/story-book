@@ -28,10 +28,18 @@ function App() {
       </header>
 
       <section className="flex flex-wrap items-center gap-3">
-        <Button variant="primary" size="md">Primary</Button>
-        <Button variant="secondary" size="md">Secondary</Button>
-        <Button variant="outline" size="md">Outline</Button>
-        <Badge variant="success" size="md">Ready</Badge>
+        <Button variant="primary" size="md">
+          Primary
+        </Button>
+        <Button variant="secondary" size="md">
+          Secondary
+        </Button>
+        <Button variant="outline" size="md">
+          Outline
+        </Button>
+        <Badge variant="success" size="md">
+          Ready
+        </Badge>
       </section>
 
       <section className="max-w-card space-y-3">
@@ -40,7 +48,9 @@ function App() {
           onChange={(event) => setInputValue(event.target.value)}
           placeholder="Type to preview input component"
         />
-        <p className="text-sm text-text-muted">Current value: {inputValue || "(empty)"}</p>
+        <p className="text-sm text-text-muted">
+          Current value: {inputValue || "(empty)"}
+        </p>
       </section>
 
       <section className="flex items-center gap-3">
@@ -61,10 +71,15 @@ function App() {
         size="md"
         className="max-w-card"
       >
-        Add your product-specific components on top of this shared design-system package.
+        Add your product-specific components on top of this shared design-system
+        package.
       </Card>
 
-      <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
+      />
       <TextInput
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
@@ -103,7 +118,7 @@ function App() {
           <p className="text-sm text-text-muted">Loading users...</p>
         )}
 
-        {usersError && <p className="text-sm text-danger">{usersError}</p>}
+        {usersError && <p className="text-danger text-sm">{usersError}</p>}
 
         {!usersLoading && !usersError && (
           <ul className="space-y-2">

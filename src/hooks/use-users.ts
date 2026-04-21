@@ -6,7 +6,12 @@ import type { IList, User } from "../types/api.types";
 export function useUsers() {
   const api = useApi();
   const userService = useMemo(() => createUserService(api), [api]);
-  const [data, setData] = useState<IList<User>>({ offset: 0, pageSize: 10, total: 0, items: [] });
+  const [data, setData] = useState<IList<User>>({
+    offset: 0,
+    pageSize: 10,
+    total: 0,
+    items: [],
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

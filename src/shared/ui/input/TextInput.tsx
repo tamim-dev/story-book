@@ -22,15 +22,17 @@ const sizeClasses: Record<InputSize, string> = {
   lg: "h-12 px-4 text-lg",
 };
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function TextInput(
-  { variant = "default", size = "md", className, ...props },
-  ref,
-) {
-  return (
-    <BaseInput
-      ref={ref}
-      className={cn(variantClasses[variant], sizeClasses[size], className)}
-      {...props}
-    />
-  );
-});
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  function TextInput(
+    { variant = "default", size = "md", className, ...props },
+    ref,
+  ) {
+    return (
+      <BaseInput
+        ref={ref}
+        className={cn(variantClasses[variant], sizeClasses[size], className)}
+        {...props}
+      />
+    );
+  },
+);

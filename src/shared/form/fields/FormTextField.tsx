@@ -5,7 +5,11 @@ export type FormTextFieldProps = TextInputProps & {
   hasError?: boolean;
 };
 
-export function FormTextField({ hasError, variant, ...props }: FormTextFieldProps) {
+export function FormTextField({
+  hasError,
+  variant,
+  ...props
+}: FormTextFieldProps) {
   const resolvedVariant = hasError ? "error" : (variant ?? "default");
   return <TextInput variant={resolvedVariant} {...props} />;
 }

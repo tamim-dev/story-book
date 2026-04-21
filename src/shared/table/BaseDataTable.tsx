@@ -10,7 +10,10 @@ export function BaseDataTable<TData extends Record<string, unknown>>({
       <thead>
         <tr className="border-b border-border">
           {columns.map((column) => (
-            <th key={String(column.key)} className="px-3 py-2 font-semibold text-text">
+            <th
+              key={String(column.key)}
+              className="px-3 py-2 font-semibold text-text"
+            >
               {column.header}
             </th>
           ))}
@@ -20,7 +23,10 @@ export function BaseDataTable<TData extends Record<string, unknown>>({
         {rows.map((row, index) => (
           <tr key={rowKey(row, index)} className="border-b border-border">
             {columns.map((column) => (
-              <td key={String(column.key)} className="px-3 py-2 text-text-muted">
+              <td
+                key={String(column.key)}
+                className="px-3 py-2 text-text-muted"
+              >
                 {String(row[column.key])}
               </td>
             ))}
