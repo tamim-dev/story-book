@@ -1,31 +1,22 @@
+@import "../design-system/tokens/tokens.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-primary: #3b82f6;
-    --color-primary-hover: #2563eb;
-    --color-secondary: #64748b;
-    --color-secondary-hover: #475569;
-    --color-success: #22c55e;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-text: #0f172a;
-    --color-text-muted: #475569;
-    --color-background: #f8fafc;
-    --color-surface: #ffffff;
-    --color-border: #cbd5e1;
-    --color-focus-ring: #93c5fd;
-  }
-
+  html,
   body {
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family:
+      var(--fontfamilies-public-sans, "Public Sans"), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease;
   }
 
   #root {
@@ -34,5 +25,48 @@
     width: 100%;
     max-width: 72rem;
     padding: 1.5rem;
+  }
+
+  :root,
+  .light,
+  [data-theme="light"] {
+    --color-primary: var(--color-primary-500);
+    --color-primary-hover: var(--color-primary-600);
+    --color-secondary: var(--color-secondary-500);
+    --color-secondary-hover: var(--color-secondary-600);
+    --color-success: var(--color-success-500);
+    --color-warning: var(--color-warning-500);
+    --color-error: var(--color-danger-500);
+    --color-text: var(--color-gray-900);
+    --color-text-muted: var(--color-gray-600);
+    --color-background: var(--color-gray-50);
+    --color-surface: var(--color-gray-00);
+    --color-border: var(--color-gray-200);
+    --color-focus-ring: var(--color-secondary-300);
+  }
+  .dark,
+  [data-theme="dark"] {
+    --color-primary: var(--color-primary-500);
+    --color-text: var(--color-gray-00);
+    --color-text-muted: var(--color-gray-300);
+    --color-background: var(--color-gray-900);
+    --color-surface: var(--color-gray-800);
+    --color-border: var(--color-gray-700);
+    --color-focus-ring: var(--color-secondary-400);
+  }
+}
+
+@layer components {
+  h1 {
+    @apply text-2xl font-semibold;
+  }
+  h2 {
+    @apply text-xl font-semibold;
+  }
+  h3 {
+    @apply text-lg font-semibold;
+  }
+  h4 {
+    @apply text-base font-semibold;
   }
 }

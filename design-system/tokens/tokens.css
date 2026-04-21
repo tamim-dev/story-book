@@ -1,0 +1,120 @@
+:root {
+  --color-primary-50: #5eff00;
+  --color-primary-100: #ffe7d6;
+  --color-primary-200: #ffcead;
+  --color-primary-300: #ffb685;
+  --color-primary-400: #ff9d5c;
+  --color-primary-500: #fa8232;
+  --color-primary-600: #de732d;
+  --color-primary-700: #99501f;
+  --color-primary-800: #663514;
+  --color-primary-900: #331b0a;
+  --color-secondary-50: #eaf6fe;
+  --color-secondary-100: #d5edfd;
+  --color-secondary-200: #abdbfa;
+  --color-secondary-300: #81c9f8;
+  --color-secondary-400: #57b7f5;
+  --color-secondary-500: #2da5f3;
+  --color-secondary-600: #2484c2;
+  --color-secondary-700: #1b6392;
+  --color-secondary-800: #124261;
+  --color-secondary-900: #092131;
+  --color-gray-50: #f2f4f5;
+  --color-gray-100: #e4e7e9;
+  --color-gray-200: #c9cfd2;
+  --color-gray-300: #adb7bc;
+  --color-gray-400: #929fa5;
+  --color-gray-500: #77878f;
+  --color-gray-600: #5f6c72;
+  --color-gray-700: #475156;
+  --color-gray-800: #303639;
+  --color-gray-900: #191c1f;
+  --color-gray-00: #ffffff;
+  --color-success-50: #eaf7e9;
+  --color-success-100: #d5f0d3;
+  --color-success-200: #abe0a7;
+  --color-success-300: #81d17c;
+  --color-success-400: #57c150;
+  --color-success-500: #2db224;
+  --color-success-600: #248e1d;
+  --color-success-700: #1b6b16;
+  --color-success-800: #12470e;
+  --color-success-900: #092407;
+  --color-warning-50: #fdfae7;
+  --color-warning-100: #fbf4ce;
+  --color-warning-200: #f7e99e;
+  --color-warning-300: #f3de6d;
+  --color-warning-400: #efd33d;
+  --color-warning-500: #ebc80c;
+  --color-warning-600: #bca00a;
+  --color-warning-700: #8d7807;
+  --color-warning-800: #5e5005;
+  --color-warning-900: #2f2802;
+  --color-danger-50: #fdeeee;
+  --color-danger-100: #fcdede;
+  --color-danger-200: #f8bcbc;
+  --color-danger-300: #f59b9b;
+  --color-danger-400: #f17979;
+  --color-danger-500: #ee5858;
+  --color-danger-600: #be4646;
+  --color-danger-700: #8f3535;
+  --color-danger-800: #5f2323;
+  --color-danger-900: #301212;
+  --color-test-50: #5eff00;
+  --color-test-100: #e4e7e9;
+  --color-test-200: #c9cfd2;
+  --color-test-300: #adb7bc;
+  --color-test-400: #929fa5;
+  --color-test-500: #77878f;
+  --color-test-600: #5f6c72;
+  --color-test-700: #475156;
+  --color-test-800: #303639;
+  --color-test-900: #191c1f;
+  --color-test-00: #ffffff;
+  --dropdown-shadow: 0px 8px 40px 0px #0000001f;
+  --display-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=72 |
+    fontsize=64 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=64 |
+    fontsize=56 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=56 |
+    fontsize=48 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-04: fontfamily=Public Sans | fontweight=SemiBold | lineheight=48 |
+    fontsize=40 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --display-05: fontfamily=Public Sans | fontweight=SemiBold | lineheight=44 |
+    fontsize=36 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-01: fontfamily=Public Sans | fontweight=SemiBold | lineheight=40 |
+    fontsize=32 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-02: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 |
+    fontsize=28 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-03: fontfamily=Public Sans | fontweight=SemiBold | lineheight=32 |
+    fontsize=24 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=none | textdecoration=none;
+  --heading-06: fontfamily=Public Sans | fontweight=Bold | lineheight=56 |
+    fontsize=16 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px
+    | textcase=uppercase | textdecoration=none;
+  --heading-07: fontfamily=Public Sans | fontweight=Bold | lineheight=48 |
+    fontsize=14 | letterspacing=1.2% | paragraphspacing=0 | paragraphindent=0px
+    | textcase=uppercase | textdecoration=none;
+  --label-01: fontfamily=Public Sans | fontweight=Medium | lineheight=28 |
+    fontsize=18 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-02: fontfamily=Public Sans | fontweight=Medium | lineheight=24 |
+    fontsize=16 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-03: fontfamily=Public Sans | fontweight=Medium | lineheight=20 |
+    fontsize=14 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-04: fontfamily=Public Sans | fontweight=Medium | lineheight=150% |
+    fontsize=12 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+  --label-05: fontfamily=Public Sans | fontweight=Medium | lineheight=16 |
+    fontsize=11 | letterspacing=0% | paragraphspacing=0 | paragraphindent=0px |
+    textcase=uppercase | textdecoration=none;
+}

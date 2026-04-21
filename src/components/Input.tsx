@@ -1,2 +1,6 @@
-export { Input } from "../../design-system/components/Input";
-export type { InputProps, InputSize, InputVariant } from "../../design-system/components/Input";
+export { TextInput as Input } from "../shared/ui/input";
+export type {
+  InputSize,
+  InputVariant,
+  TextInputProps as InputProps,
+} from "../shared/ui/input";

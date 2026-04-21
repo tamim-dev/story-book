@@ -4,7 +4,10 @@ import { cn } from "../utils/cn";
 export type ToggleVariant = "primary" | "secondary" | "outline";
 export type ToggleSize = "sm" | "md" | "lg";
 
-export type ToggleProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> & {
+export type ToggleProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "onChange"
+> & {
   checked: boolean;
   onChange: (checked: boolean) => void;
   variant?: ToggleVariant;

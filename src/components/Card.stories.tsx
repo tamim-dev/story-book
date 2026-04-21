@@ -19,7 +19,7 @@ const meta = {
     variant: "default",
     size: "md",
   },
-  argTypes: {    
+  argTypes: {
     variant: {
       control: "select",
       options: ["default", "outlined", "elevated"],

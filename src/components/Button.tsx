@@ -1,6 +1,6 @@
-export { Button } from "../../design-system/components/Button";
+export { Button } from "../shared/ui/button";
 export type {
   ButtonProps,
   ButtonSize,
   ButtonVariant,
-} from "../../design-system/components/Button";
+} from "../shared/ui/button";
