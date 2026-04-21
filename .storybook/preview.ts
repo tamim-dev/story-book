@@ -1,5 +1,12 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/index.css'
+import {
+  applyThemeToDocument,
+  getStoredTheme,
+  getSystemTheme,
+} from '../src/lib/theme'
+
+applyThemeToDocument(getStoredTheme() ?? getSystemTheme())
 
 const preview: Preview = {
   tags: ['autodocs'],
