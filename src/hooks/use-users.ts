@@ -7,10 +7,10 @@ export function useUsers() {
   const api = useApi();
   const userService = useMemo(() => createUserService(api), [api]);
   const [data, setData] = useState<IList<User>>({
-    offset: 0,
-    pageSize: 10,
+    limit: 10,
+    skip: 0,
     total: 0,
-    items: [],
+    users: [],
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -21,8 +21,8 @@ export function useUsers() {
       setError(null);
 
       try {
-        const users = await userService.getUsers();
-        setData(users.data);
+        const response = await userService.getUsers();
+        setData(response as unknown as IList<User>);
       } catch {
         setError("Failed to fetch users");
       } finally {
