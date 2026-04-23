@@ -6,7 +6,6 @@ export function createUserService(api: AxiosInstance) {
     getUsers: async () => {
       const response = await api.get<Array<User>>("/users");
       return response;
-
     },
     getUserById: async (id: string) => {
       const response = await api.get<User>(`/users/${id}`);

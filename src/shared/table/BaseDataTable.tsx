@@ -6,33 +6,38 @@ export function BaseDataTable<TData extends Record<string, unknown>>({
   rowKey,
 }: BaseDataTableProps<TData>) {
   return (
-    <table className="w-full border-collapse text-left text-sm">
-      <thead>
-        <tr className="border-b border-border">
-          {columns.map((column) => (
-            <th
-              key={String(column.key)}
-              className="px-3 py-2 font-semibold text-text"
-            >
-              {column.header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row, index) => (
-          <tr key={rowKey(row, index)} className="border-b border-border">
+    <div className="w-full overflow-hidden rounded-xl border border-border bg-surface shadow-sm">
+      <table className="w-full border-collapse text-left text-sm">
+        <thead>
+          <tr className="border-b border-border bg-background">
             {columns.map((column) => (
-              <td
+              <th
                 key={String(column.key)}
-                className="px-3 py-2 text-text-muted"
+                className="px-3 py-2 font-semibold text-text"
               >
-                {String(row[column.key])}
-              </td>
+                {column.header}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr
+              key={rowKey(row, index)}
+              className="border-b border-border transition-colors last:border-0 hover:bg-background"
+            >
+              {columns.map((column) => (
+                <td
+                  key={String(column.key)}
+                  className="px-3 py-2 text-text-muted"
+                >
+                  {String(row[column.key])}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -1,6 +1,8 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../components";
 import { useAuth } from "../hooks/use-auth";
+import GENDER from "../utils/Gender";
+import { routes } from "../routes/Route";
 
 export function DashboardPage() {
   const { authUser, logout } = useAuth();
@@ -10,7 +12,7 @@ export function DashboardPage() {
     return <Navigate to="/auth/login" replace />;
   }
 
-  const isFemale = authUser.gender?.toLowerCase() === "female";
+  const isFemale = authUser.gender === GENDER.FEMALE;
   const backgroundClass = isFemale ? "bg-pink-100" : "bg-blue-100";
   const message = isFemale
     ? "You are logged in successfully. Have a great day."
@@ -31,7 +33,19 @@ export function DashboardPage() {
         </h1>
         <p className="mt-2 text-text-muted">{message}</p>
         <p className="mt-4 text-sm text-text-muted">{authUser.email}</p>
-        <Button className="mt-6 w-full" variant="outline" onClick={handleLogout}>
+
+        <Button
+          className="mt-6 w-full"
+          variant="outline"
+          onClick={() => navigate(routes.users.path)}
+        >
+          Users List
+        </Button>
+        <Button
+          className="mt-6 w-full"
+          variant="outline"
+          onClick={handleLogout}
+        >
           Logout
         </Button>
       </section>

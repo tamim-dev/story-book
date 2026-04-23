@@ -19,14 +19,6 @@
       border-color 180ms ease;
   }
 
-  #root {
-    margin: 0 auto;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 72rem;
-    padding: 1.5rem;
-  }
-
   :root,
   .light,
   [data-theme="light"] {

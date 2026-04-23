@@ -2,9 +2,11 @@ import { useMemo, useState } from "react";
 import { useApi } from "./use-api";
 import { createAuthService } from "../services/auth.service";
 import type { AuthUser, LoginPayload } from "../types/api.types";
-import { AUTH_USER_STORAGE_KEY, TOKEN_STORAGE_KEY, REFRESH_TOKEN_STORAGE_KEY } from "../utils/Constants";
-
-
+import {
+  AUTH_USER_STORAGE_KEY,
+  TOKEN_STORAGE_KEY,
+  REFRESH_TOKEN_STORAGE_KEY,
+} from "../utils/Constants";
 
 export function getStoredUser() {
   const value = localStorage.getItem(AUTH_USER_STORAGE_KEY);
@@ -24,7 +26,9 @@ export function getStoredUser() {
 export function useAuth() {
   const api = useApi();
   const authService = useMemo(() => createAuthService(api), [api]);
-  const [authUser, setAuthUser] = useState<AuthUser | null>(() => getStoredUser());
+  const [authUser, setAuthUser] = useState<AuthUser | null>(() =>
+    getStoredUser(),
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

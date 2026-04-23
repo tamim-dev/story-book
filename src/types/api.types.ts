@@ -42,4 +42,3 @@ export interface AuthUser {
   accessToken: string;
   refreshToken: string;
 }
-
