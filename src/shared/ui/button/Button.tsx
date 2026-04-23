@@ -1,4 +1,5 @@
-import type { ComponentProps } from "react";
+import { forwardRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "../../../../design-system/utils/cn";
 import { BaseButton } from "../primitives/BaseButton";
 
@@ -10,7 +11,7 @@ export type ButtonVariant =
   | "link";
 export type ButtonSize = "sm" | "md" | "lg";
 
-export type ButtonProps = ComponentProps<typeof BaseButton> & {
+export type ButtonProps = ComponentPropsWithoutRef<typeof BaseButton> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
 };
@@ -29,16 +30,15 @@ const sizeClasses: Record<ButtonSize, string> = {
   lg: "h-12 px-5 text-lg",
 };
 
-export function Button({
-  variant = "primary",
-  size = "md",
-  className,
-  ...rest
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { variant = "primary", size = "md", className, ...rest },
+  ref,
+) {
   return (
     <BaseButton
+      ref={ref}
       className={cn(variantClasses[variant], sizeClasses[size], className)}
       {...rest}
     />
   );
-}
+});

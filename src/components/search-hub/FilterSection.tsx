@@ -32,14 +32,14 @@ export function FilterSection({
       <div className="mb-2 flex items-center justify-between">
         <span className="text-sm font-medium text-text">{filter.label}</span>
         {showActions ? (
-          <button
-            type="button"
+          <Button
+            variant="link"
+            size="sm"
             aria-label="Close filter"
-            className="inline-flex size-8 items-center justify-center rounded-md text-text-muted transition-colors hover:bg-background hover:text-text"
             onClick={onClose ?? onDone}
           >
-            <X className="size-5" />
-          </button>
+            <X className="size-4" />
+          </Button>
         ) : (
           <Button
             variant="link"

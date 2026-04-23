@@ -164,8 +164,10 @@ export function TopFilterBar() {
                 }}
                 className={`relative shrink-0 ${partiallyHiddenFilterKeys.has(filter.key) ? "pointer-events-none invisible" : ""}`}
               >
-                <button
+                <Button
                   type="button"
+                  variant="outline"
+                  size="md"
                   aria-expanded={isOpen}
                   className="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-[15px] font-medium text-text transition-colors hover:bg-background"
                   onClick={() =>
@@ -181,7 +183,7 @@ export function TopFilterBar() {
                   <ChevronDown
                     className={`size-4 text-text-muted transition-transform ${isOpen ? "rotate-180" : "rotate-0"}`}
                   />
-                </button>
+                </Button>
                 {isOpen ? (
                   <div className="absolute right-0 top-[calc(100%+10px)] z-20 w-96 max-w-[calc(100vw-2rem)]">
                     <FilterSection
