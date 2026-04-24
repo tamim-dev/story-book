@@ -1,0 +1,27 @@
+:root {
+  --component-button-default-bg: var(--global-color-gray-00);
+  --component-button-default-border: var(--global-color-gray-300);
+  --component-button-default-text: var(--global-color-gray-900);
+  --component-button-primary-bg: var(--global-color-primary-500);
+  --component-button-secondary-bg: var(--global-color-secondary-500);
+  --component-button-outline-bg: transparent;
+  --component-button-link-bg: transparent;
+  --component-button-primary-border: var(--global-color-primary-500);
+  --component-button-secondary-border: var(--global-color-secondary-500);
+  --component-button-outline-border: var(--global-color-primary-500);
+  --component-button-link-border: transparent;
+  --component-button-primary-text: var(--global-color-gray-00);
+  --component-button-secondary-text: var(--global-color-gray-00);
+  --component-button-outline-text: var(--global-color-primary-500);
+  --component-button-link-text: var(--global-color-primary-500);
+  --component-button-radius: 0.5rem;
+  --component-button-padding-inline-sm: 0.75rem;
+  --component-button-padding-inline-md: 1rem;
+  --component-button-padding-inline-lg: 1.25rem;
+  --component-button-height-sm: 2rem;
+  --component-button-height-md: 2.5rem;
+  --component-button-height-lg: 3rem;
+  --component-button-font-size-sm: var(--global-font-size-2);
+  --component-button-font-size-md: var(--global-font-size-3);
+  --component-button-font-size-lg: var(--global-font-size-4);
+}

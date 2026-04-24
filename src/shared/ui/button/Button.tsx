@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "../../../../design-system/utils/cn";
 import { BaseButton } from "../primitives/BaseButton";
+import styles from "./Button.module.css";
 
 export type ButtonVariant =
   | "default"
@@ -17,28 +18,35 @@ export type ButtonProps = ComponentPropsWithoutRef<typeof BaseButton> & {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  default: "",
-  primary: "bg-primary text-surface hover:bg-primary-hover",
-  secondary: "bg-secondary text-surface hover:bg-secondary-hover",
-  outline: "border border-border bg-surface text-text hover:bg-background",
-  link: "text-primary hover:underline",
+  default: styles.default,
+  primary: styles.primary,
+  secondary: styles.secondary,
+  outline: styles.outline,
+  link: styles.link,
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-8 px-3 text-sm",
-  md: "h-10 px-4 text-base",
-  lg: "h-12 px-5 text-lg",
+  sm: styles.sm,
+  md: styles.md,
+  lg: styles.lg,
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "primary", size = "md", className, ...rest },
-  ref,
-) {
-  return (
-    <BaseButton
-      ref={ref}
-      className={cn(variantClasses[variant], sizeClasses[size], className)}
-      {...rest}
-    />
-  );
-});
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    { variant = "primary", size = "md", className, ...rest },
+    ref,
+  ) {
+    return (
+      <BaseButton
+        ref={ref}
+        className={cn(
+          styles.button,
+          variantClasses[variant],
+          sizeClasses[size],
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);

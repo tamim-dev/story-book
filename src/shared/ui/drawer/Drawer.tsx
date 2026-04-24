@@ -18,7 +18,7 @@ export type IDrawerProps = {
   closeLabel?: string;
   panelClassName?: string;
   bodyClassName?: string;
-}
+};
 
 export function Drawer({
   onClose,

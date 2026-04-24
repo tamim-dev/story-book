@@ -1,12 +1,15 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { Button } from "../components";
+import { Button, Toggle } from "../components";
 import { useAuth } from "../hooks/use-auth";
 import GENDER from "../utils/Gender";
 import { routes } from "../routes/Route";
+import { useTheme } from "../hooks/useTheme";
 
 export function DashboardPage() {
   const { authUser, logout } = useAuth();
   const navigate = useNavigate();
+
+  const { theme, setTheme } = useTheme();
 
   if (!authUser) {
     return <Navigate to="/auth/login" replace />;
@@ -34,6 +37,11 @@ export function DashboardPage() {
         <p className="mt-2 text-text-muted">{message}</p>
         <p className="mt-4 text-sm text-text-muted">{authUser.email}</p>
 
+        <Toggle
+          checked={theme === "dark"}
+          onChange={(checked) => setTheme(checked ? "dark" : "light")}
+          aria-label="Toggle theme"
+        />
         <Button
           className="mt-6 w-full"
           variant="outline"

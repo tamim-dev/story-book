@@ -1,8 +1,35 @@
-
 {
-    "button":{
-        "color": "--color-primary-500",
-        "background-color": "--color-primary-100"
+  "component": {
+    "button": {
+      "default-bg": "var(--global-color-gray-00)",
+      "default-border": "var(--global-color-gray-300)",
+      "default-text": "var(--global-color-gray-900)",
+
+      "primary-bg": "var(--global-color-primary-500)",
+      "secondary-bg": "var(--global-color-secondary-500)",
+      "outline-bg": "transparent",
+      "link-bg": "transparent",
+
+      "primary-border": "var(--global-color-primary-500)",
+      "secondary-border": "var(--global-color-secondary-500)",
+      "outline-border": "var(--global-color-primary-500)",
+      "link-border": "transparent",
+
+      "primary-text": "var(--global-color-gray-00)",
+      "secondary-text": "var(--global-color-gray-00)",
+      "outline-text": "var(--global-color-primary-500)",
+      "link-text": "var(--global-color-primary-500)",
+
+      "radius": "0.5rem",
+      "padding-inline-sm": "0.75rem",
+      "padding-inline-md": "1rem",
+      "padding-inline-lg": "1.25rem",
+      "height-sm": "2rem",
+      "height-md": "2.5rem",
+      "height-lg": "3rem",
+      "font-size-sm": "var(--global-font-size-2)",
+      "font-size-md": "var(--global-font-size-3)",
+      "font-size-lg": "var(--global-font-size-4)"
     }
-    
+  }
 }

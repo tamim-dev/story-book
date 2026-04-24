@@ -14,6 +14,7 @@ export function TopFilterBar() {
     searchInput,
     setSearchInput,
     setFilterValues,
+    resetAll,
     executeSearch,
     canSearch,
   } = useFilterContext();
@@ -166,7 +167,7 @@ export function TopFilterBar() {
               >
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="default"
                   size="md"
                   aria-expanded={isOpen}
                   className="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-[15px] font-medium text-text transition-colors hover:bg-background"
@@ -221,7 +222,10 @@ export function TopFilterBar() {
             type="button"
             size="md"
             variant="primary"
-            onClick={() => executeSearch("topbar")}
+            onClick={() => {
+              executeSearch("topbar");
+              resetAll();
+            }}
             disabled={!canSearch}
           >
             Search
