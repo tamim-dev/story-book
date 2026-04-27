@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { CustomCheckbox } from "../../shared/ui/input";
 import { useFilterContext } from "./FilterProvider";
 import type { FilterOption } from "./types";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "../Button";
+import { cn } from "../../../design-system/utils/cn";
+import styles from "./AccordionSection.module.css";
 
 type AccordionSectionProps = {
   filterKey: string;
@@ -25,15 +27,8 @@ export function AccordionSection({
   const { getSelectAllState, toggleOption, toggleSelectAll } =
     useFilterContext();
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  const bodyRef = useRef<HTMLDivElement>(null);
   const count = values.length;
   const selectAllState = getSelectAllState(filterKey, values);
-
-  useEffect(() => {
-    const el = bodyRef.current;
-    if (!el) return;
-    el.style.maxHeight = isOpen ? `${el.scrollHeight}px` : "0px";
-  }, [isOpen, options, values]);
 
   const handleReset = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -41,20 +36,16 @@ export function AccordionSection({
   };
 
   return (
-    <div className="overflow-hidden rounded-lg border border-border bg-surface">
-      {/* Accordion header */}
+    <div className={styles.root}>
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between gap-2 p-4 py-3 text-left hover:bg-background"
+        className={styles.trigger}
+        aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-text">{label}</span>
-          {count > 0 && (
-            <span className="bg-primary-100 flex min-h-6 min-w-6 items-center justify-center rounded-full px-2 py-1 text-xs font-medium text-primary">
-              {count}
-            </span>
-          )}
+          <span className={styles.label}>{label}</span>
+          {count > 0 && <span className={styles.count}>{count}</span>}
         </div>
 
         <div className="flex items-center gap-2">
@@ -68,46 +59,42 @@ export function AccordionSection({
               Reset
             </Button>
           )}
-          <span className="text-text-muted">
-            {isOpen ? (
-              <ChevronUp className="size-4" />
-            ) : (
-              <ChevronDown className="size-4" />
-            )}
-          </span>
+          <ChevronDown className={styles.chevron} data-open={isOpen} />
         </div>
       </button>
 
       <div
-        ref={bodyRef}
-        className={`${isOpen ? "open border-t border-border" : ""}`}
-        style={{ maxHeight: defaultOpen ? `${9999}px` : "0px" }}
+        className={styles.collapsible}
+        data-open={isOpen}
+        role="region"
+        aria-hidden={!isOpen}
       >
-        <div className="space-y-3 px-4 py-3">
-          <label className="flex cursor-pointer items-center gap-2.5">
-            <CustomCheckbox
-              state={selectAllState}
-              onChange={() => onChange(toggleSelectAll(filterKey, values))}
-            />
-            <span className="text-sm font-medium text-text">Select All</span>
-          </label>
-
-          <div className="border-t border-border" />
-
-          {options.map((option) => (
-            <label
-              key={option.value}
-              className="flex cursor-pointer items-center gap-2.5"
-            >
+        <div className={styles.inner}>
+          <div className={styles.content}>
+            <label className={styles.optionLabel}>
               <CustomCheckbox
-                state={values.includes(option.value) ? "checked" : "unchecked"}
-                onChange={() =>
-                  onChange(toggleOption(filterKey, values, option.value))
-                }
+                state={selectAllState}
+                onChange={() => onChange(toggleSelectAll(filterKey, values))}
               />
-              <span className="text-[13px] text-text">{option.label}</span>
+              <span className={styles.selectAllText}>Select All</span>
             </label>
-          ))}
+
+            <hr className={styles.divider} />
+
+            {options.map((option) => (
+              <label key={option.value} className={styles.optionLabel}>
+                <CustomCheckbox
+                  state={
+                    values.includes(option.value) ? "checked" : "unchecked"
+                  }
+                  onChange={() =>
+                    onChange(toggleOption(filterKey, values, option.value))
+                  }
+                />
+                <span className={cn(styles.optionText)}>{option.label}</span>
+              </label>
+            ))}
+          </div>
         </div>
       </div>
     </div>

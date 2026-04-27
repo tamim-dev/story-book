@@ -1,0 +1,102 @@
+.track {
+  --toggle-active-bg: var(--component-toggle-primary-active-bg);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: var(--component-toggle-track-radius);
+  background-color: var(--component-toggle-track-bg);
+  padding: var(--component-toggle-track-padding);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.track[aria-checked="true"] {
+  background-color: var(--toggle-active-bg);
+}
+
+.track:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--component-toggle-focus-ring),
+    0 0 0 4px
+      color-mix(in srgb, var(--component-toggle-focus-ring) 25%, transparent);
+}
+
+.track:disabled {
+  cursor: not-allowed;
+  opacity: var(--component-toggle-disabled-opacity);
+}
+
+/* --- Variants --- */
+
+.primary {
+  --toggle-active-bg: var(--component-toggle-primary-active-bg);
+}
+
+.secondary {
+  --toggle-active-bg: var(--component-toggle-secondary-active-bg);
+}
+
+.outline {
+  --toggle-active-bg: var(--component-toggle-outline-active-bg);
+  border-color: var(--component-toggle-outline-border);
+}
+
+/* --- Sizes --- */
+
+.smTrack {
+  height: var(--component-toggle-track-height-sm);
+  width: var(--component-toggle-track-width-sm);
+}
+
+.mdTrack {
+  height: var(--component-toggle-track-height-md);
+  width: var(--component-toggle-track-width-md);
+}
+
+.lgTrack {
+  height: var(--component-toggle-track-height-lg);
+  width: var(--component-toggle-track-width-lg);
+}
+
+/* --- Thumb --- */
+
+.thumb {
+  border-radius: var(--component-toggle-thumb-radius);
+  background-color: var(--component-toggle-thumb-bg);
+  box-shadow: var(--component-toggle-thumb-shadow);
+  transition: transform 160ms ease;
+  transform: translateX(0);
+}
+
+.smThumb {
+  width: var(--component-toggle-thumb-size-sm);
+  height: var(--component-toggle-thumb-size-sm);
+}
+
+.mdThumb {
+  width: var(--component-toggle-thumb-size-md);
+  height: var(--component-toggle-thumb-size-md);
+}
+
+.lgThumb {
+  width: var(--component-toggle-thumb-size-lg);
+  height: var(--component-toggle-thumb-size-lg);
+}
+
+.track[aria-checked="true"] .smThumb {
+  transform: translateX(var(--component-toggle-thumb-translate-sm));
+}
+
+.track[aria-checked="true"] .mdThumb {
+  transform: translateX(var(--component-toggle-thumb-translate-md));
+}
+
+.track[aria-checked="true"] .lgThumb {
+  transform: translateX(var(--component-toggle-thumb-translate-lg));
+}

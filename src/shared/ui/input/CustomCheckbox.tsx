@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Check, Minus } from "lucide-react";
 import { cn } from "../../../../design-system/utils/cn";
+import styles from "./CustomCheckbox.module.css";
 
 export type CustomCheckboxState = "checked" | "indeterminate" | "unchecked";
 
@@ -27,27 +28,19 @@ export function CustomCheckbox({
   }, [isIndeterminate]);
 
   return (
-    <span
-      className={cn(
-        "relative inline-flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-colors",
-        isActive
-          ? "border-primary bg-primary text-surface"
-          : "border-text-muted bg-background text-transparent",
-        className,
-      )}
-    >
+    <span className={cn(styles.checkbox, isActive && styles.active, className)}>
       <input
         ref={inputRef}
         type="checkbox"
         checked={isChecked}
         aria-checked={isIndeterminate ? "mixed" : isChecked}
         onChange={onChange}
-        className="absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0"
+        className={styles.hiddenInput}
       />
       {isIndeterminate && !isChecked ? (
-        <Minus className="h-3 w-3" strokeWidth={2.5} />
+        <Minus className={styles.icon} strokeWidth={2.5} />
       ) : isChecked ? (
-        <Check className="h-3 w-3" strokeWidth={2.5} />
+        <Check className={styles.icon} strokeWidth={2.5} />
       ) : null}
     </span>
   );

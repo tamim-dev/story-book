@@ -1,0 +1,70 @@
+.card {
+  --card-bg: var(--component-card-default-bg);
+  --card-border: var(--component-card-default-border);
+  --card-border-width: var(--component-card-default-border-width);
+  --card-shadow: var(--component-card-default-shadow);
+
+  border-radius: var(--component-card-radius);
+  background-color: var(--card-bg);
+  border: var(--card-border-width) solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  text-align: left;
+  color: var(--component-card-body-color);
+}
+
+/* --- Variants --- */
+
+.default {
+  --card-bg: var(--component-card-default-bg);
+  --card-border: var(--component-card-default-border);
+  --card-border-width: var(--component-card-default-border-width);
+  --card-shadow: var(--component-card-default-shadow);
+}
+
+.outlined {
+  --card-bg: var(--component-card-outlined-bg);
+  --card-border: var(--component-card-outlined-border);
+  --card-border-width: var(--component-card-outlined-border-width);
+  --card-shadow: var(--component-card-outlined-shadow);
+}
+
+.elevated {
+  --card-bg: var(--component-card-elevated-bg);
+  --card-border: var(--component-card-elevated-border);
+  --card-border-width: var(--component-card-elevated-border-width);
+  --card-shadow: var(--component-card-elevated-shadow);
+}
+
+/* --- Sizes --- */
+
+.sm {
+  padding: var(--component-card-padding-sm);
+}
+
+.md {
+  padding: var(--component-card-padding-md);
+}
+
+.lg {
+  padding: var(--component-card-padding-lg);
+}
+
+/* --- Inner elements --- */
+
+.title {
+  margin-bottom: var(--component-card-title-margin-bottom);
+  font-size: var(--component-card-title-font-size);
+  font-weight: var(--component-card-title-font-weight);
+  color: var(--component-card-title-color);
+}
+
+.description {
+  font-size: var(--component-card-description-font-size);
+  color: var(--component-card-description-color);
+}
+
+.body {
+  margin-top: var(--component-card-body-margin-top);
+  font-size: var(--component-card-body-font-size);
+  color: var(--component-card-body-color);
+}

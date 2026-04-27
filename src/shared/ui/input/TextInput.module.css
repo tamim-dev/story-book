@@ -1,0 +1,67 @@
+.input {
+  --input-border: var(--component-input-default-border);
+  --input-focus-border: var(--component-input-default-focus-border);
+
+  width: 100%;
+  background-color: var(--component-input-bg);
+  color: var(--component-input-text);
+  border: 1px solid var(--input-border);
+  border-radius: var(--component-input-radius);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.input::placeholder {
+  color: var(--component-input-placeholder);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--component-input-focus-ring) 45%, transparent);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  background-color: var(--component-input-disabled-bg);
+  opacity: var(--component-input-disabled-opacity);
+}
+
+/* --- Variants --- */
+
+.default {
+  --input-border: var(--component-input-default-border);
+  --input-focus-border: var(--component-input-default-focus-border);
+}
+
+.error {
+  --input-border: var(--component-input-error-border);
+  --input-focus-border: var(--component-input-error-focus-border);
+}
+
+.success {
+  --input-border: var(--component-input-success-border);
+  --input-focus-border: var(--component-input-success-focus-border);
+}
+
+/* --- Sizes --- */
+
+.sm {
+  min-height: var(--component-input-height-sm);
+  padding: 0 var(--component-input-padding-inline-sm);
+  font-size: var(--component-input-font-size-sm);
+}
+
+.md {
+  min-height: var(--component-input-height-md);
+  padding: 0 var(--component-input-padding-inline-md);
+  font-size: var(--component-input-font-size-md);
+}
+
+.lg {
+  min-height: var(--component-input-height-lg);
+  padding: 0 var(--component-input-padding-inline-lg);
+  font-size: var(--component-input-font-size-lg);
+}

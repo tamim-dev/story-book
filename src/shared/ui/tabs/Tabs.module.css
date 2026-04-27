@@ -1,0 +1,55 @@
+.tablist {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--component-tabs-container-radius);
+  border: 1px solid var(--component-tabs-container-border);
+  background-color: var(--component-tabs-container-bg);
+  padding: var(--component-tabs-container-padding);
+}
+
+.tab {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: var(--component-tabs-tab-height);
+  border-radius: var(--component-tabs-tab-radius);
+  padding: 0 var(--component-tabs-tab-padding-x);
+  font-size: var(--component-tabs-tab-font-size);
+  font-weight: var(--component-tabs-tab-font-weight);
+  color: var(--component-tabs-inactive-text);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.tab:hover:not(.disabled) {
+  background-color: var(--component-tabs-hover-bg);
+  color: var(--component-tabs-hover-text);
+}
+
+.tab:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--component-tabs-focus-ring),
+    0 0 0 4px
+      color-mix(in srgb, var(--component-tabs-focus-ring) 25%, transparent);
+}
+
+.active {
+  background-color: var(--component-tabs-active-bg);
+  color: var(--component-tabs-active-text);
+  box-shadow: var(--component-tabs-active-shadow);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: var(--component-tabs-disabled-opacity);
+}
+
+.enabled {
+  cursor: pointer;
+}
