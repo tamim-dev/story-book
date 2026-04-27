@@ -31,7 +31,7 @@
       "font-size-md": "var(--global-font-size-3)",
       "font-size-lg": "var(--global-font-size-4)",
 
-      "filter-bg": "var(--global-color-gray-00)",
+      "filter-bg": "var(--color-background)",
       "filter-border": "var(--color-border)",
       "filter-text": "var(--color-text)",
       "filter-hover-bg": "var(--color-background)",

@@ -1,24 +1,26 @@
-import { type FormEvent, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Button, Input } from "../components";
-import { useAuth } from "../hooks/use-auth";
-import { routes } from "../routes/Route";
+import { type FormEvent, useMemo, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { Button, Input } from "../../components";
+import { useAuth } from "../../hooks/use-auth";
+import { routes } from "../../routes/Route";
 
 export function LoginPage() {
   const { authUser, login, loading, error } = useAuth();
-  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (authUser) {
-      navigate(routes.dashboard.path, { replace: true });
-    }
-  }, [authUser, navigate]);
+  const trimmedUsername = username.trim();
+  const isSubmitDisabled = useMemo(
+    () => loading || trimmedUsername.length === 0 || password.length === 0,
+    [loading, trimmedUsername, password],
+  );
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await login({ username, password });
+    if (isSubmitDisabled) {
+      return;
+    }
+
+    await login({ username: trimmedUsername, password });
   };
 
   if (authUser) {
@@ -43,6 +45,9 @@ export function LoginPage() {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               placeholder="Enter username"
+              autoComplete="username"
+              aria-invalid={Boolean(error)}
+              aria-describedby={error ? "login-error-message" : undefined}
               required
             />
           </div>
@@ -56,13 +61,25 @@ export function LoginPage() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Enter password"
+              autoComplete="current-password"
+              aria-invalid={Boolean(error)}
+              aria-describedby={error ? "login-error-message" : undefined}
               required
             />
           </div>
 
-          {error && <p className="text-danger text-sm">{error}</p>}
+          {error && (
+            <p
+              id="login-error-message"
+              className="text-danger text-sm"
+              role="alert"
+              aria-live="polite"
+            >
+              {error}
+            </p>
+          )}
 
-          <Button className="w-full" type="submit" disabled={loading}>
+          <Button className="w-full" type="submit" disabled={isSubmitDisabled}>
             {loading ? "Logging in..." : "Login"}
           </Button>
         </form>

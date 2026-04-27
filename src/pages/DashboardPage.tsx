@@ -30,10 +30,8 @@ export function DashboardPage() {
     <main
       className={`flex min-h-screen items-center justify-center p-4 ${backgroundClass}`}
     >
-      <section className="w-full max-w-md rounded-xl bg-white p-6 shadow-md">
-        <h1 className="text-2xl font-semibold text-text">
-          Welcome {authUser.firstName}
-        </h1>
+      <section className="w-full max-w-md rounded-xl bg-background p-6 shadow-md">
+        <h1>Welcome {authUser.firstName}</h1>
         <p className="mt-2 text-text-muted">{message}</p>
         <p className="mt-4 text-sm text-text-muted">{authUser.email}</p>
 

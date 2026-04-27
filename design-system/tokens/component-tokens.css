@@ -24,7 +24,7 @@
   --component-button-font-size-sm: var(--global-font-size-2);
   --component-button-font-size-md: var(--global-font-size-3);
   --component-button-font-size-lg: var(--global-font-size-4);
-  --component-button-filter-bg: var(--global-color-gray-00);
+  --component-button-filter-bg: var(--color-background);
   --component-button-filter-border: var(--color-border);
   --component-button-filter-text: var(--color-text);
   --component-button-filter-hover-bg: var(--color-background);
