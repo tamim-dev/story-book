@@ -1,6 +1,6 @@
-export { Toggle } from "../../design-system/components/Toggle";
+export { Toggle } from "../shared/ui/toggle";
 export type {
   ToggleProps,
   ToggleSize,
   ToggleVariant,
-} from "../../design-system/components/Toggle";
+} from "../shared/ui/toggle";

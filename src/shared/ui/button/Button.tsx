@@ -9,7 +9,8 @@ export type ButtonVariant =
   | "primary"
   | "secondary"
   | "outline"
-  | "link";
+  | "link"
+  | "filter";
 export type ButtonSize = "sm" | "md" | "lg";
 
 export type ButtonProps = ComponentPropsWithoutRef<typeof BaseButton> & {
@@ -23,6 +24,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: styles.secondary,
   outline: styles.outline,
   link: styles.link,
+  filter: styles.filter,
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

@@ -13,12 +13,7 @@ export const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
     return (
       <input
         ref={ref}
-        className={cn(
-          "w-full rounded-md border bg-surface text-text placeholder:text-text-muted",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
-          "disabled:cursor-not-allowed disabled:bg-background disabled:opacity-70",
-          className,
-        )}
+        className={cn("appearance-none outline-none", className)}
         {...props}
       />
     );

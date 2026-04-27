@@ -41,12 +41,7 @@ export function FilterSection({
             <X className="size-4" />
           </Button>
         ) : (
-          <Button
-            variant="link"
-            size="sm"
-            onClick={() => onChange([])}
-            className="text-xs font-medium text-primary hover:underline"
-          >
+          <Button variant="link" size="sm" onClick={() => onChange([])}>
             Reset
           </Button>
         )}
@@ -83,7 +78,6 @@ export function FilterSection({
                     onChange={() =>
                       onChange(toggleOption(filter.key, values, option.value))
                     }
-                    className="h-4 w-4 rounded border-border"
                   />
                   <span>{option.label}</span>
                 </label>

@@ -1,0 +1,101 @@
+.root {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.trigger:hover {
+  background-color: var(--color-background);
+}
+
+.label {
+  font-size: var(--global-font-size-2);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.count {
+  display: flex;
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  padding: 0.25rem 0.5rem;
+  font-size: var(--global-font-size-1);
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.chevron {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-muted);
+  transition: transform 200ms ease;
+}
+
+.chevron[data-open="true"] {
+  transform: rotate(180deg);
+}
+
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+
+.collapsible[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.inner {
+  overflow: hidden;
+}
+
+.content {
+  border-top: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
+.optionLabel {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.optionText {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+}
+
+.selectAllText {
+  font-size: var(--global-font-size-2);
+  font-weight: 500;
+  color: var(--color-text);
+}

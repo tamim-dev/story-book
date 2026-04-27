@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button, Input, Tabs } from "../../components";
 import { FilterSection } from "./FilterSection";
 import { useFilterContext } from "./FilterProvider";
@@ -29,6 +29,7 @@ export function TopFilterBar() {
   >(new Set());
   const filtersRowRef = useRef<HTMLDivElement | null>(null);
   const filterItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const sortedFilters = useMemo(
     () =>
@@ -48,7 +49,22 @@ export function TopFilterBar() {
     setActiveFilterKey(filterKey);
   };
 
-  const closeFilter = () => setActiveFilterKey(null);
+  const closeFilter = useCallback(() => setActiveFilterKey(null), []);
+
+  useEffect(() => {
+    if (!activeFilterKey) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      const activeItem = filterItemRefs.current[activeFilterKey];
+      if (activeItem && !activeItem.contains(target)) {
+        closeFilter();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [activeFilterKey, closeFilter]);
 
   useEffect(() => {
     const root = filtersRowRef.current;
@@ -95,7 +111,7 @@ export function TopFilterBar() {
           value={searchInput}
           onChange={(event) => setSearchInput(event.target.value)}
           placeholder="Search by ID, name, contract..."
-          className="min-w-[220px] flex-1 pl-8 pr-2"
+          className="min-w-[220px] flex-1 !pl-8 pr-2"
         />
         <Search className="absolute left-2 top-1/2 size-4 -translate-y-1/2 text-text-muted" />
       </div>
@@ -104,12 +120,12 @@ export function TopFilterBar() {
           ref={filtersRowRef}
           className="flex min-w-0 flex-1 gap-2 overflow-x-clip"
         >
-          <div className="flex shrink-0 justify-end">
+          <div className="flex shrink-0 self-stretch">
             <Button
               type="button"
               variant="outline"
               size="md"
-              className="h-full"
+              aria-label="Open advanced filters"
               onClick={() => setIsDrawerOpen(true)}
             >
               <ListFilter className="size-4" />
@@ -117,7 +133,7 @@ export function TopFilterBar() {
           </div>
           {sortedFilters.map((filter) => {
             const selectedValues = globalFilters[filter.key] ?? [];
-            const selectedCount = (globalFilters[filter.key] ?? []).length;
+            const selectedCount = selectedValues.length;
             const isTabFilter = filter.options.length <= 2;
             const isOpen = activeFilterKey === filter.key;
 
@@ -150,7 +166,7 @@ export function TopFilterBar() {
                       )
                     }
                     className="w-auto shrink-0 gap-1 border-0 bg-gray-100 p-1 shadow-none"
-                    tabClassName="h-8 min-w-fit px-4 text-[15px] font-medium"
+                    tabClassName="min-w-fit px-4 text-sm font-medium"
                   />
                 </div>
               );
@@ -167,10 +183,11 @@ export function TopFilterBar() {
               >
                 <Button
                   type="button"
-                  variant="default"
+                  variant="filter"
                   size="md"
+                  className="h-full"
                   aria-expanded={isOpen}
-                  className="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-[15px] font-medium text-text transition-colors hover:bg-background"
+                  aria-haspopup="true"
                   onClick={() =>
                     isOpen ? closeFilter() : openFilter(filter.key)
                   }
@@ -186,7 +203,10 @@ export function TopFilterBar() {
                   />
                 </Button>
                 {isOpen ? (
-                  <div className="absolute right-0 top-[calc(100%+10px)] z-20 w-96 max-w-[calc(100vw-2rem)]">
+                  <div
+                    ref={dropdownRef}
+                    className="absolute right-0 top-[calc(100%+10px)] z-20 w-96 max-w-[calc(100vw-2rem)]"
+                  >
                     <FilterSection
                       filter={filter}
                       values={

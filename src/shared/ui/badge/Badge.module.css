@@ -1,0 +1,55 @@
+.badge {
+  --badge-bg: var(--component-badge-primary-bg);
+  --badge-text: var(--component-badge-primary-text);
+
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--component-badge-radius);
+  font-weight: var(--component-badge-font-weight);
+  line-height: 1;
+  white-space: nowrap;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+}
+
+/* --- Variants --- */
+
+.primary {
+  --badge-bg: var(--component-badge-primary-bg);
+  --badge-text: var(--component-badge-primary-text);
+}
+
+.secondary {
+  --badge-bg: var(--component-badge-secondary-bg);
+  --badge-text: var(--component-badge-secondary-text);
+}
+
+.success {
+  --badge-bg: var(--component-badge-success-bg);
+  --badge-text: var(--component-badge-success-text);
+}
+
+.error {
+  --badge-bg: var(--component-badge-error-bg);
+  --badge-text: var(--component-badge-error-text);
+}
+
+/* --- Sizes --- */
+
+.sm {
+  padding: var(--component-badge-padding-y-sm)
+    var(--component-badge-padding-x-sm);
+  font-size: var(--component-badge-font-size-sm);
+}
+
+.md {
+  padding: var(--component-badge-padding-y-md)
+    var(--component-badge-padding-x-md);
+  font-size: var(--component-badge-font-size-md);
+}
+
+.lg {
+  padding: var(--component-badge-padding-y-lg)
+    var(--component-badge-padding-x-lg);
+  font-size: var(--component-badge-font-size-lg);
+}

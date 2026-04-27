@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { cn } from "../../../../design-system/utils/cn";
+import styles from "./Tabs.module.css";
 
 export type TabOption = {
   label: string;
@@ -26,7 +27,7 @@ export function Tabs({
   className,
   tabClassName,
 }: TabsProps) {
-  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const tabRefs = useRef<Array<HTMLLIElement | null>>([]);
 
   const getNextEnabledIndex = (startIndex: number, step: 1 | -1) => {
     let currentIndex = startIndex;
@@ -40,28 +41,23 @@ export function Tabs({
   };
 
   return (
-    <div
+    <ul
       role="tablist"
       aria-label={ariaLabel}
-      className={cn(
-        "inline-flex h-full w-full items-center rounded-xl border border-border bg-background p-1",
-        className,
-      )}
+      className={cn(styles.tablist, className)}
     >
       {options.map((option, index) => {
         const isSelected = value === option.value;
         return (
-          <button
+          <li
             key={option.value}
             ref={(node) => {
               tabRefs.current[index] = node;
             }}
-            type="button"
             role="tab"
             aria-selected={isSelected}
             aria-disabled={option.disabled}
             tabIndex={isSelected ? 0 : -1}
-            disabled={option.disabled}
             onClick={() => {
               if (allowDeselect && isSelected) {
                 onChange(null);
@@ -110,20 +106,16 @@ export function Tabs({
               }
             }}
             className={cn(
-              "h-9 flex-1 rounded-lg px-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
-              isSelected
-                ? "bg-surface text-text shadow-sm"
-                : "text-text-muted hover:bg-surface hover:text-text",
-              option.disabled
-                ? "cursor-not-allowed opacity-50"
-                : "cursor-pointer",
+              styles.tab,
+              isSelected && styles.active,
+              option.disabled ? styles.disabled : styles.enabled,
               tabClassName,
             )}
           >
             {option.label}
-          </button>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

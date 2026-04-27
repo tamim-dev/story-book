@@ -8,8 +8,9 @@ import {
 import { cn } from "../../../../design-system/utils/cn";
 import { X } from "lucide-react";
 import { Button } from "../button";
+import styles from "./Drawer.module.css";
 
-export type IDrawerProps = {
+export type DrawerProps = {
   onClose: () => void;
   title: string;
   description?: string;
@@ -20,6 +21,9 @@ export type IDrawerProps = {
   bodyClassName?: string;
 };
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function Drawer({
   onClose,
   title,
@@ -29,13 +33,19 @@ export function Drawer({
   closeLabel = "Close drawer",
   panelClassName,
   bodyClassName,
-}: IDrawerProps) {
+}: DrawerProps) {
   const [isAnimatingIn, setIsAnimatingIn] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    previousActiveElement.current = document.activeElement as HTMLElement;
     const raf1 = requestAnimationFrame(() => {
-      const raf2 = requestAnimationFrame(() => setIsAnimatingIn(true));
+      const raf2 = requestAnimationFrame(() => {
+        setIsAnimatingIn(true);
+        panelRef.current?.focus();
+      });
       return () => cancelAnimationFrame(raf2);
     });
     return () => cancelAnimationFrame(raf1);
@@ -49,15 +59,38 @@ export function Drawer({
 
   const handleClose = useCallback(() => {
     setIsAnimatingIn(false);
-    closeTimerRef.current = setTimeout(() => onClose(), 300);
+    closeTimerRef.current = setTimeout(() => {
+      previousActiveElement.current?.focus();
+      onClose();
+    }, 300);
   }, [onClose]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         handleClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !panelRef.current) return;
+
+      const focusable = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleClose]);
@@ -72,28 +105,22 @@ export function Drawer({
           handleClose();
         }
       }}
-      className={cn(
-        "fixed inset-0 z-50 flex justify-end bg-black/40 transition-opacity duration-300",
-        isAnimatingIn ? "opacity-100" : "opacity-0",
-      )}
+      className={cn(styles.overlay, isAnimatingIn && styles.overlayVisible)}
     >
       <aside
+        ref={panelRef}
+        tabIndex={-1}
         className={cn(
-          "flex h-full w-full max-w-[420px] flex-col bg-surface shadow-2xl",
-          "translate-x-full transform transition-transform duration-300 ease-in-out",
-          isAnimatingIn && "translate-x-0",
+          styles.panel,
+          isAnimatingIn && styles.panelVisible,
           panelClassName,
         )}
       >
-        <div className="flex flex-shrink-0 items-start justify-between border-b border-border px-5 py-4">
+        <div className={styles.header}>
           <div>
-            <h3 className="text-[15px] font-semibold leading-tight text-text">
-              {title}
-            </h3>
+            <h3 className={styles.title}>{title}</h3>
             {description ? (
-              <p className="mt-0.5 text-[13px] leading-snug text-text-muted">
-                {description}
-              </p>
+              <p className={styles.description}>{description}</p>
             ) : null}
           </div>
           <Button
@@ -101,21 +128,14 @@ export function Drawer({
             size="sm"
             aria-label={closeLabel}
             onClick={handleClose}
-            className="flex items-center justify-center rounded border border-border text-text-muted transition-colors hover:bg-background"
           >
             <X className="size-3" />
           </Button>
         </div>
 
-        <div className={cn("flex-1 overflow-y-auto px-4 py-3", bodyClassName)}>
-          {children}
-        </div>
+        <div className={cn(styles.body, bodyClassName)}>{children}</div>
 
-        {footer ? (
-          <div className="flex flex-shrink-0 items-center gap-3 border-t border-border px-5 py-4">
-            {footer}
-          </div>
-        ) : null}
+        {footer ? <div className={styles.footer}>{footer}</div> : null}
       </aside>
     </div>
   );
