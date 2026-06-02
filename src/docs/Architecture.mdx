@@ -1,0 +1,120 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Mermaid } from "./Mermaid";
+
+<Meta title="Architecture" />
+
+# Project Architecture
+
+How design tokens, CSS modules, and components connect across the codebase.
+
+<Mermaid chart={`
+graph TD
+  subgraph Tokens["Design Tokens"]
+    GlobalJSON["tokens/global.json\nGlobal primitives"]
+    ComponentJSON["design-system/component.json\nComponent-level tokens"]
+    GenerateScript["scripts/generate-tokens.js"]
+    TokensCSS["tokens.css\nGlobal CSS variables"]
+    ComponentTokensCSS["component-tokens.css\nComponent CSS variables"]
+
+    GlobalJSON --> GenerateScript
+    ComponentJSON --> GenerateScript
+    GenerateScript --> TokensCSS
+    GenerateScript --> ComponentTokensCSS
+  end
+
+  subgraph Theme["Theme Layer"]
+    IndexCSS["src/index.css\nImports tokens · :root / .light / .dark"]
+    TokensCSS --> IndexCSS
+    ComponentTokensCSS --> IndexCSS
+  end
+
+  subgraph Modules["CSS Modules"]
+    ButtonCSS["Button.module.css"]
+    InputCSS["TextInput.module.css"]
+    CardCSS["Card.module.css"]
+    BadgeCSS["Badge.module.css"]
+    ToggleCSS["Toggle.module.css"]
+    DrawerCSS["Drawer.module.css"]
+    TabsCSS["Tabs.module.css"]
+  end
+
+  IndexCSS -- "var(--component-*)\nvar(--global-*)" --> Modules
+
+  subgraph SharedUI["Shared UI · src/shared/ui"]
+    Primitives["BaseButton · BaseInput"]
+    Button["Button"]
+    Input["TextInput · Checkbox"]
+    Card["Card"]
+    Badge["Badge"]
+    Toggle["Toggle"]
+    Drawer["Drawer"]
+    Tabs["Tabs"]
+  end
+
+  ButtonCSS --> Button
+  InputCSS --> Input
+  CardCSS --> Card
+  BadgeCSS --> Badge
+  ToggleCSS --> Toggle
+  DrawerCSS --> Drawer
+  TabsCSS --> Tabs
+  Primitives --> Button
+  Primitives --> Input
+
+  subgraph Barrel["Re-export Layer · src/components"]
+    ComponentBarrel["index.ts\nPublic API for app consumption"]
+  end
+
+  SharedUI --> ComponentBarrel
+
+  subgraph DSPackage["Design System Package"]
+    DSComponents["design-system/components\nButton · Input · Card · Badge · Toggle"]
+  end
+
+  SharedUI --> DSComponents
+
+  subgraph Features["Feature Components"]
+    SearchHub["search-hub\nFilterSection · TopFilterBar\nFilterDrawer · AccordionSection"]
+  end
+
+  ComponentBarrel --> SearchHub
+
+  subgraph Pages["Application Pages"]
+    LoginPage["LoginPage"]
+    Dashboard["DashboardPage"]
+    UsersPage["Users"]
+  end
+
+  ComponentBarrel --> LoginPage
+  ComponentBarrel --> Dashboard
+  SearchHub --> UsersPage
+
+  subgraph SB["Storybook"]
+    Stories["*.stories.tsx\nAutodocs · a11y · Chromatic"]
+    Preview["preview.ts\nImports index.css · applies theme"]
+  end
+
+  IndexCSS --> Preview
+  ComponentBarrel --> Stories
+  SearchHub --> Stories
+`} />
+
+---
+
+## Token Flow Summary
+
+| Layer | Source | Output |
+|---|---|---|
+| **Primitives** | `tokens/global.json` | `--global-color-*`, `--global-font-*`, `--global-spacing-*` |
+| **Component** | `design-system/component.json` | `--component-button-*`, `--component-card-*`, etc. |
+| **Theme** | `src/index.css` | `:root` / `.light` / `.dark` semantic aliases |
+| **Module** | `*.module.css` | Scoped styles consuming `var(--…)` tokens |
+
+## Component Consumption
+
+```
+src/shared/ui/*        → Implementation (TSX + CSS Module)
+src/components/*       → Re-export barrel for app/story imports
+src/components/search-hub/* → Feature-level composites
+src/pages/*            → Route-level pages
+```
