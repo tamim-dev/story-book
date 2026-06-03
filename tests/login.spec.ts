@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-const BASE_URL = process.env.PLAYWRIGHT_BASE_URL;
+const BASE_URL =
+  process.env.PLAYWRIGHT_BASE_URL || "https://designsy.netlify.app";
 const LOGIN_PATH = "/auth/login";
 console.log("BASE_URL", BASE_URL);
 test.describe("Login", () => {
