@@ -9,3 +9,6 @@ export type { FormDateFieldProps } from "./FormDateField";
 
 export { FormRadioGroup } from "./FormRadioGroup";
 export type { FormRadioGroupProps } from "./FormRadioGroup";
+
+export { FormField } from "./FormField";
+export type { FormFieldProps } from "./FormField";

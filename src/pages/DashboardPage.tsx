@@ -27,10 +27,10 @@ export function DashboardPage() {
   };
 
   return (
-    <main
-      className={`flex min-h-screen items-center justify-center p-4 ${backgroundClass}`}
+    <section
+      className={`rounded-xl p-6 shadow-md ${backgroundClass}`}
     >
-      <section className="w-full max-w-md rounded-xl bg-background p-6 shadow-md">
+      <div className="max-w-md">
         <h1>Welcome {authUser.firstName}</h1>
         <p className="mt-2 text-text-muted">{message}</p>
         <p className="mt-4 text-sm text-text-muted">{authUser.email}</p>
@@ -54,7 +54,7 @@ export function DashboardPage() {
         >
           Logout
         </Button>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
